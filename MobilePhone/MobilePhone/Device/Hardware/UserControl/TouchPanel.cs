@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.UserControl {
     abstract class TouchPanel : UserControl {
-        public int SensitivityRate { get; private set; }
+        public int SensitivityRate { get; }
 
         protected TouchPanel(int height, int width, int sensitivityRate) : base(height, width)
         {

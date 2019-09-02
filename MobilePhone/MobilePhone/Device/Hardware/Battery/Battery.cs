@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.Battery {
     public class Battery{
-        public int Capacity { get; private set; }
-        public int ChargingTime { get; private set; }
+        public int Capacity { get; }
+        public int ChargingTime { get; }
 
         public Battery(int capacity, int chargingTime) {
             Capacity = capacity;

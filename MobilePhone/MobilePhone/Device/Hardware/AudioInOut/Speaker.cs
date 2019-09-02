@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.AudioInOut {
     public class Speaker{
-        public int OutputPower { get; private set; }
-        public string Bandwidth { get; private set; }
+        public int OutputPower { get; }
+        public string Bandwidth { get; }
 
         public Speaker(int outputPower, string bandwidth) {
             OutputPower = outputPower;

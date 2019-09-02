@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.AudioInOut {
     public class Microphone{
-        public int SensitivityRate { get; private set; }
-        public string Bandwidth { get; private set; }
+        public int SensitivityRate { get; }
+        public string Bandwidth { get; }
 
         public Microphone(int sensitivityRate, string bandwidth) {
             SensitivityRate = sensitivityRate;

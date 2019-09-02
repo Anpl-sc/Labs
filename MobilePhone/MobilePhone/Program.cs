@@ -8,8 +8,8 @@ using MobilePhone.Device;
 namespace MobilePhone {
     class Program {
         static void Main(string[] args) {
-            SimCorpMobile SimCorpMobile = new SimCorpMobile();
-            Console.WriteLine(SimCorpMobile.GetDescription());
+            Mobile simCorpMobile = new SimCorpMobile();
+            Console.WriteLine(simCorpMobile);
             Console.ReadKey();
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.UserControl {
     class Keyboard : UserControl {
-        public int ButtonsNumber { get; private set; }
+        public int ButtonsNumber { get; }
 
         public Keyboard(int height, int width, int buttonsNumber) : base(height, width) {
             ButtonsNumber = buttonsNumber;

@@ -47,10 +47,9 @@ namespace MobilePhone.Device {
             Control.ParseInput(input);
         }
 
-        public string GetDescription() {
+        public override string ToString() {
             var descriptionBuilder = new StringBuilder();
-            descriptionBuilder.AppendLine($"Mobile Device Type: {ToString()}\n" +
-                                          $"Microphone Type: {Microphone.ToString()}\n" + 
+            descriptionBuilder.AppendLine($"Microphone Type: {Microphone.ToString()}\n" + 
                                           $"Speaker Type: {Speaker.ToString()}\n" +
                                           $"Battery Type: {Battery.ToString()}\n" +
                                           $"Cell Module Type: {CellModule.ToString()}\n" +

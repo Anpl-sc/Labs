@@ -50,6 +50,8 @@
     <Compile Include="Device\Hardware\CellularModule\ICellularPackage.cs" />
     <Compile Include="Device\Hardware\CellularModule\PackageType.cs" />
     <Compile Include="Device\Hardware\AudioInOut\ISound.cs" />
+    <Compile Include="Device\Hardware\Screen\BasicScreenProfile.cs" />
+    <Compile Include="Device\Hardware\Screen\ScreenType.cs" />
     <Compile Include="Device\Hardware\Screen\IScreenImage.cs" />
     <Compile Include="Device\Hardware\Screen\IScreenProfile.cs" />
     <Compile Include="Device\Hardware\UserControl\IUserInput.cs" />
@@ -59,8 +61,7 @@
     <Compile Include="Device\Hardware\UserControl\UserControl.cs" />
     <Compile Include="Device\Hardware\UserControl\Keyboard.cs" />
     <Compile Include="Device\Hardware\AudioInOut\Microphone.cs" />
-    <Compile Include="Device\Hardware\Screen\ELincScreen.cs" />
-    <Compile Include="Device\Hardware\Screen\LcdScreen.cs" />
+    <Compile Include="Device\Hardware\Screen\TuningScreen.cs" />
     <Compile Include="Device\Hardware\Screen\Screen.cs" />
     <Compile Include="Device\Hardware\AudioInOut\Speaker.cs" />
     <Compile Include="Device\Mobile.cs" />

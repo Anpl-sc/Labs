@@ -30,8 +30,11 @@ namespace MobilePhone.Device {
 
             int screenHeight = 1920;
             int screenWidth = 1080;
-            int screenDiagonalSize = 5;
-            vLcdScreen = new LcdScreen(screenHeight, screenWidth, screenDiagonalSize);
+            ScreenType screenType = ScreenType.Lcd;
+            int brightness = 73;
+            int contrast = 57;
+            IScreenProfile screenProfile = new BasicScreenProfile(brightness, contrast);
+            vScreen = new TuningScreen(screenHeight, screenWidth, screenType, screenProfile);
 
             int controlHeght = 140;
             int controlWidth = 68;
@@ -43,18 +46,20 @@ namespace MobilePhone.Device {
         private readonly Speaker vSpeaker;
         private readonly Battery vBattery;
         private readonly CellularModule vCellModule;
-        private readonly LcdScreen vLcdScreen;
+        private readonly TuningScreen vScreen;
         private readonly UserControl vMultiTouchPanel;
 
         public override Microphone Microphone { get { return vMicrophone; } }
         public override Speaker Speaker { get { return vSpeaker; } }
         public override Battery Battery { get { return vBattery; } }
         public override CellularModule CellModule { get { return vCellModule; } }
-        public override Screen Screen { get { return vLcdScreen; } }
+        public override Screen Screen { get { return vScreen; } }
         public override UserControl Control { get { return vMultiTouchPanel; } }
 
         public override string ToString() {
-            return "SimCorp Mobile";
+            var descriptionBuilder = new StringBuilder();
+            descriptionBuilder.AppendLine("Mobile Device Type: SimCorp Mobile\n" + base.ToString());
+            return descriptionBuilder.ToString();
         }
     }
 }

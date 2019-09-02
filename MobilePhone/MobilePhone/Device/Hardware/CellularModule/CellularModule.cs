@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.CellularModule {
     public class CellularModule{
-        public CellularType ModuleType { get; private set; }
-        public int WorkingDistance { get; private set; }
+        public CellularType ModuleType { get; }
+        public int WorkingDistance { get; }
 
         public CellularModule(CellularType moduleType, int workingDistance) {
             ModuleType = moduleType;

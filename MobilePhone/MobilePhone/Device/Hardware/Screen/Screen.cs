@@ -5,17 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MobilePhone.Device.Hardware.Screen {
-    public abstract class Screen{
-        public int Height { get; private set; }
-        public int Width { get; private set; }
-        public int DiagonalSize { get; private set; }
+    public class Screen{
+        public int Height { get; }
+        public int Width { get; }
+        public ScreenType Type { get; }
 
-        protected Screen(int height, int width, int diagonalSize) {
+        protected Screen(int height, int width, ScreenType type) {
             Height = height;
             Width = width;
-            DiagonalSize = diagonalSize;
+            Type = type;
         }
 
-        public abstract void Show(IScreenImage image);
+        public void Show(IScreenImage image) {
+            Console.WriteLine("Image on " + Type + " display\n");
+        }
+
+        public override string ToString() {
+            return "Mobile display, Height " + Height + ", Width " + Width + ", Screen Type " + Type;
+        }
     }
 }
