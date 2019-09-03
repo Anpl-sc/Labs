@@ -43,6 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\Accessories\Audio\IAudioInOut.cs" />
+    <Compile Include="Device\Accessories\Audio\IAudio.cs" />
+    <Compile Include="Device\Accessories\Audio\HeadsetIPhone.cs" />
+    <Compile Include="Device\Accessories\Audio\NoNameHeadset.cs" />
+    <Compile Include="Device\Accessories\Audio\PortableSpeaker.cs" />
+    <Compile Include="Device\Accessories\Audio\SamsungHeadphones.cs" />
+    <Compile Include="Device\Accessories\Usb\Charger.cs" />
+    <Compile Include="Device\Accessories\Usb\FlashLight.cs" />
+    <Compile Include="Device\Accessories\Usb\IDataDeice.cs" />
+    <Compile Include="Device\Accessories\Usb\IUsb.cs" />
+    <Compile Include="Device\Accessories\Usb\UsbDisplay.cs" />
     <Compile Include="Device\Hardware\Battery\Battery.cs" />
     <Compile Include="Device\Hardware\Battery\IPowerProfile.cs" />
     <Compile Include="Device\Hardware\CellularModule\CellularModule.cs" />

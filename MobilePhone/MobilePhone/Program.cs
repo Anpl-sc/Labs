@@ -9,7 +9,8 @@ namespace MobilePhone {
     class Program {
         static void Main(string[] args) {
             Mobile simCorpMobile = new SimCorpMobile();
-            Console.WriteLine(simCorpMobile);
+            Console.Write(simCorpMobile);
+            simCorpMobile.SetAccessories();
             Console.ReadKey();
         }
     }
