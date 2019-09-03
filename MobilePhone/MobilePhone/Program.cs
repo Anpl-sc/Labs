@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MobilePhone.Device;
+using MobilePhone.UserInOut;
 
 namespace MobilePhone {
     class Program {
         static void Main(string[] args) {
-            Mobile simCorpMobile = new SimCorpMobile();
+            ConsoleInOut consoleInOut = new ConsoleInOut();
+            Mobile simCorpMobile = new SimCorpMobile(consoleInOut);
             Console.Write(simCorpMobile);
             simCorpMobile.SetAccessories();
             Console.ReadKey();

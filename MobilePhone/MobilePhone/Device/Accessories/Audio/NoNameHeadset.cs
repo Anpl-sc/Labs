@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MobilePhone.UserInOut;
 
 namespace MobilePhone.Device.Accessories.Audio {
     class NoNameHeadset : IAudioInOut {
+        private IUserInOut userInOut;
+
+        public NoNameHeadset(IUserInOut userInOut) {
+            this.userInOut = userInOut;
+        }
+
         public void Play(object data) {
-            Console.WriteLine($"{nameof(NoNameHeadset)} sound");
+            userInOut.WriteLine($"{nameof(NoNameHeadset)} sound");
         }
 
         public object Record() {

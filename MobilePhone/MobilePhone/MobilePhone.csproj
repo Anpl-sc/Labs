@@ -77,6 +77,8 @@
     <Compile Include="Device\Hardware\AudioInOut\Speaker.cs" />
     <Compile Include="Device\Mobile.cs" />
     <Compile Include="Device\SimCorpMobile.cs" />
+    <Compile Include="UserInOut\ConsoleInOut.cs" />
+    <Compile Include="UserInOut\IUserInOut.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

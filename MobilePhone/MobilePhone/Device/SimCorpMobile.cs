@@ -8,25 +8,26 @@ using MobilePhone.Device.Hardware.Battery;
 using MobilePhone.Device.Hardware.CellularModule;
 using MobilePhone.Device.Hardware.Screen;
 using MobilePhone.Device.Hardware.UserControl;
+using MobilePhone.UserInOut;
 
 namespace MobilePhone.Device {
     public class SimCorpMobile : Mobile {
-        public SimCorpMobile() {
+        public SimCorpMobile(IUserInOut userInOut) : base(userInOut) {
             int micSensitivityRate = 70;
             string micBandwidth = "40 - 20k Hz";
-            vMicrophone = new Microphone(micSensitivityRate, micBandwidth);
+            vMicrophone = new Microphone(micSensitivityRate, micBandwidth, userInOut);
 
             int outputPower = 50;
             string speakerBandwidth = "20 - 18k Hz";
-            vSpeaker = new Speaker(outputPower, speakerBandwidth);
+            vSpeaker = new Speaker(outputPower, speakerBandwidth, userInOut);
 
             int capacity = 5000;
             int chargingTime = 60;
-            vBattery = new Battery(capacity, chargingTime);
+            vBattery = new Battery(capacity, chargingTime, userInOut);
 
             CellularType cellModuleType = CellularType.Lte;
             int workingDistance = 1000;
-            vCellModule = new CellularModule(cellModuleType, workingDistance);
+            vCellModule = new CellularModule(cellModuleType, workingDistance, userInOut);
 
             int screenHeight = 1920;
             int screenWidth = 1080;
@@ -34,12 +35,12 @@ namespace MobilePhone.Device {
             int brightness = 73;
             int contrast = 57;
             IScreenProfile screenProfile = new BasicScreenProfile(brightness, contrast);
-            vScreen = new TuningScreen(screenHeight, screenWidth, screenType, screenProfile);
+            vScreen = new TuningScreen(screenHeight, screenWidth, screenType, screenProfile, userInOut);
 
             int controlHeght = 140;
             int controlWidth = 68;
             int touchSensitivityRate = 90;
-            vMultiTouchPanel = new MultiTouchPanel(controlHeght, controlWidth, touchSensitivityRate);
+            vMultiTouchPanel = new MultiTouchPanel(controlHeght, controlWidth, touchSensitivityRate, userInOut);
         }
 
         private readonly Microphone vMicrophone;

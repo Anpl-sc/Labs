@@ -10,9 +10,16 @@ using MobilePhone.Device.Hardware.Battery;
 using MobilePhone.Device.Hardware.CellularModule;
 using MobilePhone.Device.Hardware.Screen;
 using MobilePhone.Device.Hardware.UserControl;
+using MobilePhone.UserInOut;
 
 namespace MobilePhone.Device {
     public abstract class Mobile{
+        private IUserInOut userInOut;
+
+        protected Mobile(IUserInOut userInOut) {
+            this.userInOut = userInOut;
+        }
+
         public abstract Microphone Microphone { get; }
         private void TransmitSound(ISound sound) {
             Microphone.TransmitSound(sound);
@@ -82,7 +89,7 @@ namespace MobilePhone.Device {
             if (dataDeice != null) {
                 dataDeice.DataTransfer(data);
             } else {
-                Console.WriteLine("Data transferring function is not available");
+                userInOut.WriteLine("Data transferring function is not available");
             }
         }
 
@@ -99,30 +106,30 @@ namespace MobilePhone.Device {
         private void GetAudioAccessory(int choise) {
             switch (choise) {
                 case 1:
-                    AudioComponent = new HeadsetIPhone();
+                    AudioComponent = new HeadsetIPhone(userInOut);
                     break;
                 case 2:
-                    AudioComponent = new NoNameHeadset();
+                    AudioComponent = new NoNameHeadset(userInOut);
                     break;
                 case 3:
-                    AudioComponent = new PortableSpeaker();
+                    AudioComponent = new PortableSpeaker(userInOut);
                     break;
                 case 4:
                     int soundImprovingRate = 53;
-                    AudioComponent = new SamsungHeadphones(soundImprovingRate);
+                    AudioComponent = new SamsungHeadphones(soundImprovingRate, userInOut);
                     break;
             }
         }
 
         private void SetAudioAccessory()
         {
-            Console.Write(AudioAccessoryChoise());
-            int audioAccessory = Int32.Parse(Console.ReadLine());
+            userInOut.Write(AudioAccessoryChoise());
+            int audioAccessory = Int32.Parse(userInOut.ReadLine());
             GetAudioAccessory(audioAccessory);
-            Console.WriteLine($"Selected {AudioComponent}");
+            userInOut.WriteLine($"Selected {AudioComponent}");
             string sound = "Some sound";
             Play(sound);
-            Console.WriteLine(Record().ToString()+"\n");
+            userInOut.WriteLine(Record().ToString()+"\n");
         }
 
         private string UsbAccessoryChoise() {
@@ -137,27 +144,27 @@ namespace MobilePhone.Device {
         private void GetUsbAccessory(int choise) {
             switch (choise) {
                 case 1:
-                    UsbDevice = new Charger();
+                    UsbDevice = new Charger(userInOut);
                     break;
                 case 2:
-                    UsbDevice = new FlashLight();
+                    UsbDevice = new FlashLight(userInOut);
                     break;
                 case 3:
-                    UsbDevice = new UsbDisplay();
+                    UsbDevice = new UsbDisplay(userInOut);
                     break;
             }
         }
 
         private void SetUsbAccessory() {
-            Console.Write(UsbAccessoryChoise());
-            int usbAccessory = Int32.Parse(Console.ReadLine());
+            userInOut.Write(UsbAccessoryChoise());
+            int usbAccessory = Int32.Parse(userInOut.ReadLine());
             GetUsbAccessory(usbAccessory);
-            Console.WriteLine($"Selected {UsbDevice}");
+            userInOut.WriteLine($"Selected {UsbDevice}");
             string power = "Power supplied";
             PowerSupply(power);
             string data = "Transfering data";
             DataTransfer(data);
-            Console.WriteLine("");
+            userInOut.WriteLine("");
         }
 
         public void SetAccessories() {

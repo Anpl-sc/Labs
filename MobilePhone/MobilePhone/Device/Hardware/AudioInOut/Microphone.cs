@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MobilePhone.UserInOut;
 
 namespace MobilePhone.Device.Hardware.AudioInOut {
     public class Microphone{
+        private IUserInOut userInOut;
+
         public int SensitivityRate { get; }
         public string Bandwidth { get; }
 
-        public Microphone(int sensitivityRate, string bandwidth) {
+        public Microphone(int sensitivityRate, string bandwidth, IUserInOut userInOut) {
             SensitivityRate = sensitivityRate;
             Bandwidth = bandwidth;
+            this.userInOut = userInOut;
         }
 
         public void TransmitSound(ISound sound) {
-            Console.WriteLine("Transmit sound with Bit Rate " + sound.BitRate + ", and Pitch " + sound.Pitch + "\n");
+            userInOut.WriteLine("Transmit sound with Bit Rate " + sound.BitRate + ", and Pitch " + sound.Pitch + "\n");
         }
 
         public void RecordSound(ISound sound) {
-            Console.WriteLine("Record sound with Bit Rate " + sound.BitRate + ", and Pitch " + sound.Pitch + "\n");
+            userInOut.WriteLine("Record sound with Bit Rate " + sound.BitRate + ", and Pitch " + sound.Pitch + "\n");
         }
 
         public override string ToString() {
