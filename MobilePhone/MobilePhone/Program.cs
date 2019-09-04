@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobilePhone.Device;
-using MobilePhone.UserInOut;
+using MobilePhoneLibrary;
 
 namespace MobilePhone {
     class Program {
@@ -12,7 +11,8 @@ namespace MobilePhone {
             ConsoleInOut consoleInOut = new ConsoleInOut();
             Mobile simCorpMobile = new SimCorpMobile(consoleInOut);
             Console.Write(simCorpMobile);
-            simCorpMobile.SetAccessories();
+            simCorpMobile.SetAudioAccessory();
+            simCorpMobile.SetUsbAccessory();
             Console.ReadKey();
         }
     }
