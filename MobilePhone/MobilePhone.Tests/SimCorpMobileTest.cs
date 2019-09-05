@@ -21,13 +21,13 @@ namespace MobilePhone.Tests {
             fakeInOut.Selected = 4;
             fakeInOut.FakeWrite = "";
             simCorpMobile.SetAudioAccessory();
-            string expectedChoise = "Audio Accessory:";
+            string expectedChoice = "Audio Accessory:";
             string[] expectedVariants = { nameof(HeadsetIPhone), nameof(NoNameHeadset), nameof(PortableSpeaker), nameof(SamsungHeadphones) };
             string expectedOutput = $"Selected {nameof(SamsungHeadphones)}" +
                                     $"{nameof(SamsungHeadphones)} sound" +
                                     $"Record function is not available\r\n";
 
-            Assert.AreEqual(expectedChoise, fakeInOut.InputChoise);
+            Assert.AreEqual(expectedChoice, fakeInOut.InputChoice);
             Assert.AreEqual(expectedVariants.ToString(), fakeInOut.InputVariants.ToString());
             Assert.AreEqual(expectedOutput, fakeInOut.FakeWrite);
         }
@@ -37,13 +37,13 @@ namespace MobilePhone.Tests {
             fakeInOut.Selected = 3;
             fakeInOut.FakeWrite = "";
             simCorpMobile.SetUsbAccessory();
-            string expectedChoise = "USB Accessory:";
+            string expectedChoice = "USB Accessory:";
             string[] expectedVariants = { nameof(Charger), nameof(FlashLight), nameof(UsbDisplay) };
             string expectedOutput = $"Selected {nameof(UsbDisplay)}" +
                                     $"{nameof(UsbDisplay)} connected to USB, consuming power" +
                                     $"Send data to {nameof(UsbDisplay)}";
 
-            Assert.AreEqual(expectedChoise, fakeInOut.InputChoise);
+            Assert.AreEqual(expectedChoice, fakeInOut.InputChoice);
             Assert.AreEqual(expectedVariants.ToString(), fakeInOut.InputVariants.ToString());
             Assert.AreEqual(expectedOutput, fakeInOut.FakeWrite);
         }

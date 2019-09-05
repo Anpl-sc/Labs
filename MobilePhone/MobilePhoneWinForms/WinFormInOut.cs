@@ -25,13 +25,13 @@ namespace MobilePhoneWinForms {
             mobileOutBox.AppendText("\r\n");
         }
 
-        public int ReadChoise(string choiseName, string[] choiseVariants)
+        public int ReadChoice(string choiceName, string[] choiceVariants)
         {
-            WriteLine(choiseName);
+            WriteLine(choiceName);
             if (SelectedVariant != null)
             {
-                for (int i = 0; i < choiseVariants.Length; i++) {
-                    if (choiseVariants[i] == SelectedVariant) { return i + 1; }
+                for (int i = 0; i < choiceVariants.Length; i++) {
+                    if (choiceVariants[i] == SelectedVariant) { return i + 1; }
                 }
             }
             return 0;

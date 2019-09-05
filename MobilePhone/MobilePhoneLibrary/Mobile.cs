@@ -89,14 +89,14 @@ namespace MobilePhoneLibrary {
             }
         }
 
-        private int AudioAccessoryChoise() {
-            string choiseName = "Audio Accessory:";
-            string[] choiseVariants = { nameof(HeadsetIPhone), nameof(NoNameHeadset), nameof(PortableSpeaker), nameof(SamsungHeadphones) };
-            return userInOut.ReadChoise(choiseName, choiseVariants);
+        private int AudioAccessoryChoice() {
+            string choiceName = "Audio Accessory:";
+            string[] choiceVariants = { nameof(HeadsetIPhone), nameof(NoNameHeadset), nameof(PortableSpeaker), nameof(SamsungHeadphones) };
+            return userInOut.ReadChoice(choiceName, choiceVariants);
         }
 
-        private void GetAudioAccessory(int choise) {
-            switch (choise) {
+        private void GetAudioAccessory(int choice) {
+            switch (choice) {
                 case 1:
                     AudioComponent = new HeadsetIPhone(userInOut);
                     break;
@@ -114,7 +114,7 @@ namespace MobilePhoneLibrary {
         }
 
         public void SetAudioAccessory() {
-            int audioAccessory = AudioAccessoryChoise();
+            int audioAccessory = AudioAccessoryChoice();
             if (audioAccessory > 0) {
                 GetAudioAccessory(audioAccessory);
                 userInOut.WriteLine($"Selected {AudioComponent}");
@@ -124,14 +124,14 @@ namespace MobilePhoneLibrary {
             }
         }
 
-        private int UsbAccessoryChoise() {
-            string choiseName = "USB Accessory:";
-            string[] choiseVariants = { nameof(Charger), nameof(FlashLight), nameof(UsbDisplay) };
-            return userInOut.ReadChoise(choiseName, choiseVariants);
+        private int UsbAccessoryChoice() {
+            string choiceName = "USB Accessory:";
+            string[] choiceVariants = { nameof(Charger), nameof(FlashLight), nameof(UsbDisplay) };
+            return userInOut.ReadChoice(choiceName, choiceVariants);
         }
 
-        private void GetUsbAccessory(int choise) {
-            switch (choise) {
+        private void GetUsbAccessory(int choice) {
+            switch (choice) {
                 case 1:
                     UsbDevice = new Charger(userInOut);
                     break;
@@ -145,7 +145,7 @@ namespace MobilePhoneLibrary {
         }
 
         public void SetUsbAccessory() {
-            int usbAccessory = UsbAccessoryChoise();
+            int usbAccessory = UsbAccessoryChoice();
             if (usbAccessory > 0) {
                 GetUsbAccessory(usbAccessory);
                 userInOut.WriteLine($"Selected {UsbDevice}");

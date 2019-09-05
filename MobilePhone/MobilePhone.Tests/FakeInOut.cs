@@ -9,7 +9,7 @@ namespace MobilePhone.Tests {
     public class FakeInOut : IUserInOut {
         public string FakeWrite { get; set; }
         public string[] InputVariants { get; private set; }
-        public string InputChoise { get; private set; }
+        public string InputChoice { get; private set; }
         public int Selected { get; set; } = 0;
 
         public void Write(string text) {
@@ -20,9 +20,9 @@ namespace MobilePhone.Tests {
             FakeWrite = FakeWrite + text;
         }
 
-        public int ReadChoise(string choiseName, string[] choiseVariants) {
-            InputChoise = choiseName;
-            InputVariants = choiseVariants;
+        public int ReadChoice(string choiceName, string[] choiceVariants) {
+            InputChoice = choiceName;
+            InputVariants = choiceVariants;
             return Selected;
         }
     }

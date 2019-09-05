@@ -11,13 +11,22 @@ namespace MobilePhone {
             Console.WriteLine(text);
         }
 
-        public int ReadChoise(string choiseName, string[] choiseVariants) {
-            Console.WriteLine("Select " + choiseName);
+        public int ReadChoice(string choiceName, string[] choiceVariants) {
+            Console.WriteLine("Select " + choiceName);
             Console.WriteLine("0 - Cancel");
-            for (int i = 0; i < choiseVariants.Length; i++) {
-                Console.WriteLine($"{i + 1} - {choiseVariants[i]}");
+            for (int i = 0; i < choiceVariants.Length; i++) {
+                Console.WriteLine($"{i + 1} - {choiceVariants[i]}");
             }
-            return Int32.Parse(Console.ReadLine());
+            bool notValidChoice = true;
+            string input;
+            do {
+                input = Console.ReadLine();
+                for (int i = 0; i <= choiceVariants.Length; i++) {
+                    if (input == i.ToString()) { notValidChoice = false; }
+                }
+                if (notValidChoice) { Console.WriteLine("Not proper variant, please select one from list"); }
+            } while (notValidChoice);
+            return Int32.Parse(input);
         }
     }
 }

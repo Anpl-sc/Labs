@@ -27,16 +27,16 @@
             this.mobileOutBox = new System.Windows.Forms.TextBox();
             this.accessoryGrp = new System.Windows.Forms.GroupBox();
             this.usbAccessGrp = new System.Windows.Forms.GroupBox();
+            this.ApplyUsbBtn = new System.Windows.Forms.Button();
             this.usbDisplayBtn = new System.Windows.Forms.RadioButton();
             this.flashLightBtn = new System.Windows.Forms.RadioButton();
             this.chargerBtn = new System.Windows.Forms.RadioButton();
             this.audioAccessGrp = new System.Windows.Forms.GroupBox();
+            this.applyAudioBtn = new System.Windows.Forms.Button();
             this.samsungSetBtn = new System.Windows.Forms.RadioButton();
             this.portableSpeakerBtn = new System.Windows.Forms.RadioButton();
             this.noNameSetBtn = new System.Windows.Forms.RadioButton();
             this.iPhoneSetBtn = new System.Windows.Forms.RadioButton();
-            this.applyAudioBtn = new System.Windows.Forms.Button();
-            this.ApplyUsbBtn = new System.Windows.Forms.Button();
             this.accessoryGrp.SuspendLayout();
             this.usbAccessGrp.SuspendLayout();
             this.audioAccessGrp.SuspendLayout();
@@ -84,6 +84,16 @@
             this.usbAccessGrp.TabIndex = 1;
             this.usbAccessGrp.TabStop = false;
             this.usbAccessGrp.Text = "USB Accessories";
+            // 
+            // ApplyUsbBtn
+            // 
+            this.ApplyUsbBtn.Location = new System.Drawing.Point(6, 111);
+            this.ApplyUsbBtn.Name = "ApplyUsbBtn";
+            this.ApplyUsbBtn.Size = new System.Drawing.Size(75, 23);
+            this.ApplyUsbBtn.TabIndex = 5;
+            this.ApplyUsbBtn.Text = "Apply";
+            this.ApplyUsbBtn.UseVisualStyleBackColor = true;
+            this.ApplyUsbBtn.Click += new System.EventHandler(this.ApplyUsbBtn_Click);
             // 
             // usbDisplayBtn
             // 
@@ -134,6 +144,16 @@
             this.audioAccessGrp.TabStop = false;
             this.audioAccessGrp.Text = "Audio Accessories";
             // 
+            // applyAudioBtn
+            // 
+            this.applyAudioBtn.Location = new System.Drawing.Point(6, 111);
+            this.applyAudioBtn.Name = "applyAudioBtn";
+            this.applyAudioBtn.Size = new System.Drawing.Size(75, 23);
+            this.applyAudioBtn.TabIndex = 4;
+            this.applyAudioBtn.Text = "Apply";
+            this.applyAudioBtn.UseVisualStyleBackColor = true;
+            this.applyAudioBtn.Click += new System.EventHandler(this.applyAudioBtn_Click);
+            // 
             // samsungSetBtn
             // 
             this.samsungSetBtn.AutoSize = true;
@@ -181,34 +201,16 @@
             this.iPhoneSetBtn.Text = "iPhone headset";
             this.iPhoneSetBtn.UseVisualStyleBackColor = true;
             // 
-            // applyAudioBtn
-            // 
-            this.applyAudioBtn.Location = new System.Drawing.Point(6, 111);
-            this.applyAudioBtn.Name = "applyAudioBtn";
-            this.applyAudioBtn.Size = new System.Drawing.Size(75, 23);
-            this.applyAudioBtn.TabIndex = 4;
-            this.applyAudioBtn.Text = "Apply";
-            this.applyAudioBtn.UseVisualStyleBackColor = true;
-            this.applyAudioBtn.Click += new System.EventHandler(this.applyAudioBtn_Click);
-            // 
-            // ApplyUsbBtn
-            // 
-            this.ApplyUsbBtn.Location = new System.Drawing.Point(6, 111);
-            this.ApplyUsbBtn.Name = "ApplyUsbBtn";
-            this.ApplyUsbBtn.Size = new System.Drawing.Size(75, 23);
-            this.ApplyUsbBtn.TabIndex = 5;
-            this.ApplyUsbBtn.Text = "Apply";
-            this.ApplyUsbBtn.UseVisualStyleBackColor = true;
-            this.ApplyUsbBtn.Click += new System.EventHandler(this.ApplyUsbBtn_Click);
-            // 
             // mobilePhoneWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 399);
+            this.ClientSize = new System.Drawing.Size(388, 378);
             this.Controls.Add(this.accessoryGrp);
             this.Controls.Add(this.mobileOutBox);
             this.Controls.Add(this.mobileInfoBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "mobilePhoneWin";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Mobile Phone";
