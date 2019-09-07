@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChargerTest.cs" />
     <Compile Include="SimCorpMobileTest.cs" />
+    <Compile Include="SMServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobilePhoneLibrary\MobilePhoneLibrary.csproj">

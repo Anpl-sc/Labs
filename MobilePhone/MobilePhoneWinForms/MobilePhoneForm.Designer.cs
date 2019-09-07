@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.mobileInfoBtn = new System.Windows.Forms.Button();
             this.mobileOutBox = new System.Windows.Forms.TextBox();
             this.accessoryGrp = new System.Windows.Forms.GroupBox();
@@ -37,9 +38,14 @@
             this.portableSpeakerBtn = new System.Windows.Forms.RadioButton();
             this.noNameSetBtn = new System.Windows.Forms.RadioButton();
             this.iPhoneSetBtn = new System.Windows.Forms.RadioButton();
+            this.smsTimer = new System.Windows.Forms.Timer(this.components);
+            this.smsApp = new System.Windows.Forms.GroupBox();
+            this.formatComboBox = new System.Windows.Forms.ComboBox();
+            this.smsBox = new System.Windows.Forms.RichTextBox();
             this.accessoryGrp.SuspendLayout();
             this.usbAccessGrp.SuspendLayout();
             this.audioAccessGrp.SuspendLayout();
+            this.smsApp.SuspendLayout();
             this.SuspendLayout();
             // 
             // mobileInfoBtn
@@ -201,11 +207,54 @@
             this.iPhoneSetBtn.Text = "iPhone headset";
             this.iPhoneSetBtn.UseVisualStyleBackColor = true;
             // 
+            // smsTimer
+            // 
+            this.smsTimer.Enabled = true;
+            this.smsTimer.Interval = 1000;
+            this.smsTimer.Tick += new System.EventHandler(this.smsTimer_Tick);
+            // 
+            // smsApp
+            // 
+            this.smsApp.Controls.Add(this.formatComboBox);
+            this.smsApp.Controls.Add(this.smsBox);
+            this.smsApp.Location = new System.Drawing.Point(391, 13);
+            this.smsApp.Name = "smsApp";
+            this.smsApp.Size = new System.Drawing.Size(372, 361);
+            this.smsApp.TabIndex = 4;
+            this.smsApp.TabStop = false;
+            this.smsApp.Text = "SMS Application";
+            // 
+            // formatComboBox
+            // 
+            this.formatComboBox.FormattingEnabled = true;
+            this.formatComboBox.Items.AddRange(new object[] {
+            "None",
+            "Start with date",
+            "End with date",
+            "Lower case",
+            "Upper case",
+            "Start with time"});
+            this.formatComboBox.Location = new System.Drawing.Point(6, 19);
+            this.formatComboBox.Name = "formatComboBox";
+            this.formatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.formatComboBox.TabIndex = 1;
+            this.formatComboBox.Text = "Select Formatting";
+            this.formatComboBox.SelectedIndexChanged += new System.EventHandler(this.formatComboBox_SelectedIndexChanged);
+            // 
+            // smsBox
+            // 
+            this.smsBox.Location = new System.Drawing.Point(6, 46);
+            this.smsBox.Name = "smsBox";
+            this.smsBox.Size = new System.Drawing.Size(360, 310);
+            this.smsBox.TabIndex = 0;
+            this.smsBox.Text = "";
+            // 
             // mobilePhoneWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 378);
+            this.ClientSize = new System.Drawing.Size(771, 378);
+            this.Controls.Add(this.smsApp);
             this.Controls.Add(this.accessoryGrp);
             this.Controls.Add(this.mobileOutBox);
             this.Controls.Add(this.mobileInfoBtn);
@@ -219,6 +268,7 @@
             this.usbAccessGrp.PerformLayout();
             this.audioAccessGrp.ResumeLayout(false);
             this.audioAccessGrp.PerformLayout();
+            this.smsApp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +290,10 @@
         private System.Windows.Forms.RadioButton iPhoneSetBtn;
         private System.Windows.Forms.Button ApplyUsbBtn;
         private System.Windows.Forms.Button applyAudioBtn;
+        private System.Windows.Forms.Timer smsTimer;
+        private System.Windows.Forms.GroupBox smsApp;
+        private System.Windows.Forms.RichTextBox smsBox;
+        private System.Windows.Forms.ComboBox formatComboBox;
     }
 }
 

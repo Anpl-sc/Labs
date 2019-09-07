@@ -75,7 +75,7 @@
     <Compile Include="IUserInOut.cs" />
     <Compile Include="Mobile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\SMS.cs" />
+    <Compile Include="Services\SMService.cs" />
     <Compile Include="SimCorpMobile.cs" />
   </ItemGroup>
   <ItemGroup />

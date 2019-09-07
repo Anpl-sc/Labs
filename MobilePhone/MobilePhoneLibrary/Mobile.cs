@@ -7,6 +7,7 @@ using MobilePhoneLibrary.Hardware.Battery;
 using MobilePhoneLibrary.Hardware.CellularModule;
 using MobilePhoneLibrary.Hardware.Screen;
 using MobilePhoneLibrary.Hardware.UserControl;
+using MobilePhoneLibrary.Services;
 
 namespace MobilePhoneLibrary {
     public abstract class Mobile{
@@ -51,6 +52,8 @@ namespace MobilePhoneLibrary {
         private void ParseInput(IUserInput input) {
             Control.ParseInput(input);
         }
+
+        public abstract SMService MessageService { get; }
 
         public override string ToString() {
             var descriptionBuilder = new StringBuilder();
