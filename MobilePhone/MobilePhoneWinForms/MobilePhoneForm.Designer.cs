@@ -28,7 +28,7 @@
             this.mobileOutBox = new System.Windows.Forms.TextBox();
             this.accessoryGrp = new System.Windows.Forms.GroupBox();
             this.usbAccessGrp = new System.Windows.Forms.GroupBox();
-            this.ApplyUsbBtn = new System.Windows.Forms.Button();
+            this.applyUsbBtn = new System.Windows.Forms.Button();
             this.usbDisplayBtn = new System.Windows.Forms.RadioButton();
             this.flashLightBtn = new System.Windows.Forms.RadioButton();
             this.chargerBtn = new System.Windows.Forms.RadioButton();
@@ -40,12 +40,29 @@
             this.iPhoneSetBtn = new System.Windows.Forms.RadioButton();
             this.smsTimer = new System.Windows.Forms.Timer(this.components);
             this.smsApp = new System.Windows.Forms.GroupBox();
+            this.searchLabel = new System.Windows.Forms.Label();
+            this.smsListView = new System.Windows.Forms.ListView();
+            this.contactsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.messageCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.filterGroupBox = new System.Windows.Forms.GroupBox();
+            this.orFilterRBtn = new System.Windows.Forms.RadioButton();
+            this.andFilterRBtn = new System.Windows.Forms.RadioButton();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.toDateTimePick = new System.Windows.Forms.DateTimePicker();
+            this.fromDateTimePick = new System.Windows.Forms.DateTimePicker();
+            this.searchMessageBox = new System.Windows.Forms.TextBox();
+            this.contactComboBox = new System.Windows.Forms.ComboBox();
             this.formatComboBox = new System.Windows.Forms.ComboBox();
-            this.smsBox = new System.Windows.Forms.RichTextBox();
+            this.msgLabel = new System.Windows.Forms.Label();
+            this.startMsgBtn = new System.Windows.Forms.Button();
+            this.stopMsgBtn = new System.Windows.Forms.Button();
+            this.notificationBox = new System.Windows.Forms.TextBox();
             this.accessoryGrp.SuspendLayout();
             this.usbAccessGrp.SuspendLayout();
             this.audioAccessGrp.SuspendLayout();
             this.smsApp.SuspendLayout();
+            this.filterGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mobileInfoBtn
@@ -80,7 +97,7 @@
             // 
             // usbAccessGrp
             // 
-            this.usbAccessGrp.Controls.Add(this.ApplyUsbBtn);
+            this.usbAccessGrp.Controls.Add(this.applyUsbBtn);
             this.usbAccessGrp.Controls.Add(this.usbDisplayBtn);
             this.usbAccessGrp.Controls.Add(this.flashLightBtn);
             this.usbAccessGrp.Controls.Add(this.chargerBtn);
@@ -91,15 +108,15 @@
             this.usbAccessGrp.TabStop = false;
             this.usbAccessGrp.Text = "USB Accessories";
             // 
-            // ApplyUsbBtn
+            // applyUsbBtn
             // 
-            this.ApplyUsbBtn.Location = new System.Drawing.Point(6, 111);
-            this.ApplyUsbBtn.Name = "ApplyUsbBtn";
-            this.ApplyUsbBtn.Size = new System.Drawing.Size(75, 23);
-            this.ApplyUsbBtn.TabIndex = 5;
-            this.ApplyUsbBtn.Text = "Apply";
-            this.ApplyUsbBtn.UseVisualStyleBackColor = true;
-            this.ApplyUsbBtn.Click += new System.EventHandler(this.ApplyUsbBtn_Click);
+            this.applyUsbBtn.Location = new System.Drawing.Point(6, 111);
+            this.applyUsbBtn.Name = "applyUsbBtn";
+            this.applyUsbBtn.Size = new System.Drawing.Size(75, 23);
+            this.applyUsbBtn.TabIndex = 5;
+            this.applyUsbBtn.Text = "Apply";
+            this.applyUsbBtn.UseVisualStyleBackColor = true;
+            this.applyUsbBtn.Click += new System.EventHandler(this.applyUsbBtn_Click);
             // 
             // usbDisplayBtn
             // 
@@ -209,20 +226,162 @@
             // 
             // smsTimer
             // 
-            this.smsTimer.Enabled = true;
-            this.smsTimer.Interval = 1000;
+            this.smsTimer.Interval = 500;
             this.smsTimer.Tick += new System.EventHandler(this.smsTimer_Tick);
             // 
             // smsApp
             // 
+            this.smsApp.Controls.Add(this.notificationBox);
+            this.smsApp.Controls.Add(this.msgLabel);
+            this.smsApp.Controls.Add(this.startMsgBtn);
+            this.smsApp.Controls.Add(this.stopMsgBtn);
+            this.smsApp.Controls.Add(this.searchLabel);
+            this.smsApp.Controls.Add(this.smsListView);
+            this.smsApp.Controls.Add(this.filterGroupBox);
+            this.smsApp.Controls.Add(this.toLabel);
+            this.smsApp.Controls.Add(this.fromLabel);
+            this.smsApp.Controls.Add(this.toDateTimePick);
+            this.smsApp.Controls.Add(this.fromDateTimePick);
+            this.smsApp.Controls.Add(this.searchMessageBox);
+            this.smsApp.Controls.Add(this.contactComboBox);
             this.smsApp.Controls.Add(this.formatComboBox);
-            this.smsApp.Controls.Add(this.smsBox);
             this.smsApp.Location = new System.Drawing.Point(391, 13);
             this.smsApp.Name = "smsApp";
-            this.smsApp.Size = new System.Drawing.Size(372, 361);
+            this.smsApp.Size = new System.Drawing.Size(372, 471);
             this.smsApp.TabIndex = 4;
             this.smsApp.TabStop = false;
             this.smsApp.Text = "SMS Application";
+            // 
+            // searchLabel
+            // 
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Location = new System.Drawing.Point(161, 49);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(41, 13);
+            this.searchLabel.TabIndex = 10;
+            this.searchLabel.Text = "Search";
+            // 
+            // smsListView
+            // 
+            this.smsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.contactsCol,
+            this.messageCol});
+            this.smsListView.Location = new System.Drawing.Point(6, 124);
+            this.smsListView.Name = "smsListView";
+            this.smsListView.Size = new System.Drawing.Size(360, 309);
+            this.smsListView.TabIndex = 9;
+            this.smsListView.UseCompatibleStateImageBehavior = false;
+            this.smsListView.View = System.Windows.Forms.View.Tile;
+            // 
+            // contactsCol
+            // 
+            this.contactsCol.Text = "Contact";
+            // 
+            // messageCol
+            // 
+            this.messageCol.Text = "Message";
+            // 
+            // filterGroupBox
+            // 
+            this.filterGroupBox.Controls.Add(this.orFilterRBtn);
+            this.filterGroupBox.Controls.Add(this.andFilterRBtn);
+            this.filterGroupBox.Location = new System.Drawing.Point(59, 45);
+            this.filterGroupBox.Name = "filterGroupBox";
+            this.filterGroupBox.Size = new System.Drawing.Size(96, 72);
+            this.filterGroupBox.TabIndex = 8;
+            this.filterGroupBox.TabStop = false;
+            this.filterGroupBox.Text = "Filter Combining";
+            // 
+            // orFilterRBtn
+            // 
+            this.orFilterRBtn.AutoSize = true;
+            this.orFilterRBtn.Location = new System.Drawing.Point(49, 42);
+            this.orFilterRBtn.Name = "orFilterRBtn";
+            this.orFilterRBtn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.orFilterRBtn.Size = new System.Drawing.Size(41, 17);
+            this.orFilterRBtn.TabIndex = 1;
+            this.orFilterRBtn.TabStop = true;
+            this.orFilterRBtn.Text = "OR";
+            this.orFilterRBtn.UseVisualStyleBackColor = true;
+            this.orFilterRBtn.CheckedChanged += new System.EventHandler(this.orFilterRBtn_CheckedChanged);
+            // 
+            // andFilterRBtn
+            // 
+            this.andFilterRBtn.AutoSize = true;
+            this.andFilterRBtn.Checked = true;
+            this.andFilterRBtn.Location = new System.Drawing.Point(42, 19);
+            this.andFilterRBtn.Name = "andFilterRBtn";
+            this.andFilterRBtn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.andFilterRBtn.Size = new System.Drawing.Size(48, 17);
+            this.andFilterRBtn.TabIndex = 0;
+            this.andFilterRBtn.TabStop = true;
+            this.andFilterRBtn.Text = "AND";
+            this.andFilterRBtn.UseVisualStyleBackColor = true;
+            this.andFilterRBtn.CheckedChanged += new System.EventHandler(this.andFilterRBtn_CheckedChanged);
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(161, 104);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(20, 13);
+            this.toLabel.TabIndex = 7;
+            this.toLabel.Text = "To";
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(161, 78);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(30, 13);
+            this.fromLabel.TabIndex = 6;
+            this.fromLabel.Text = "From";
+            // 
+            // toDateTimePick
+            // 
+            this.toDateTimePick.Checked = false;
+            this.toDateTimePick.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.toDateTimePick.Location = new System.Drawing.Point(208, 98);
+            this.toDateTimePick.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.toDateTimePick.Name = "toDateTimePick";
+            this.toDateTimePick.ShowCheckBox = true;
+            this.toDateTimePick.Size = new System.Drawing.Size(158, 20);
+            this.toDateTimePick.TabIndex = 5;
+            this.toDateTimePick.Value = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
+            this.toDateTimePick.ValueChanged += new System.EventHandler(this.toDateTimePick_ValueChanged);
+            // 
+            // fromDateTimePick
+            // 
+            this.fromDateTimePick.Checked = false;
+            this.fromDateTimePick.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.fromDateTimePick.Location = new System.Drawing.Point(208, 72);
+            this.fromDateTimePick.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.fromDateTimePick.Name = "fromDateTimePick";
+            this.fromDateTimePick.ShowCheckBox = true;
+            this.fromDateTimePick.Size = new System.Drawing.Size(158, 20);
+            this.fromDateTimePick.TabIndex = 4;
+            this.fromDateTimePick.Tag = "";
+            this.fromDateTimePick.Value = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
+            this.fromDateTimePick.ValueChanged += new System.EventHandler(this.fromDateTimePick_ValueChanged);
+            // 
+            // searchMessageBox
+            // 
+            this.searchMessageBox.Location = new System.Drawing.Point(208, 46);
+            this.searchMessageBox.Name = "searchMessageBox";
+            this.searchMessageBox.Size = new System.Drawing.Size(158, 20);
+            this.searchMessageBox.TabIndex = 3;
+            this.searchMessageBox.TextChanged += new System.EventHandler(this.searchMessageBox_TextChanged);
+            // 
+            // contactComboBox
+            // 
+            this.contactComboBox.FormattingEnabled = true;
+            this.contactComboBox.Location = new System.Drawing.Point(208, 19);
+            this.contactComboBox.Name = "contactComboBox";
+            this.contactComboBox.Size = new System.Drawing.Size(158, 21);
+            this.contactComboBox.TabIndex = 2;
+            this.contactComboBox.Text = "Select Contact";
+            this.contactComboBox.SelectedIndexChanged += new System.EventHandler(this.contactComboBox_SelectedIndexChanged);
+            this.contactComboBox.TextChanged += new System.EventHandler(this.contactComboBox_TextChanged);
             // 
             // formatComboBox
             // 
@@ -236,24 +395,52 @@
             "Start with time"});
             this.formatComboBox.Location = new System.Drawing.Point(6, 19);
             this.formatComboBox.Name = "formatComboBox";
-            this.formatComboBox.Size = new System.Drawing.Size(121, 21);
+            this.formatComboBox.Size = new System.Drawing.Size(149, 21);
             this.formatComboBox.TabIndex = 1;
             this.formatComboBox.Text = "Select Formatting";
             this.formatComboBox.SelectedIndexChanged += new System.EventHandler(this.formatComboBox_SelectedIndexChanged);
             // 
-            // smsBox
+            // msgLabel
             // 
-            this.smsBox.Location = new System.Drawing.Point(6, 46);
-            this.smsBox.Name = "smsBox";
-            this.smsBox.Size = new System.Drawing.Size(360, 310);
-            this.smsBox.TabIndex = 0;
-            this.smsBox.Text = "";
+            this.msgLabel.AutoSize = true;
+            this.msgLabel.Location = new System.Drawing.Point(6, 446);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(33, 13);
+            this.msgLabel.TabIndex = 13;
+            this.msgLabel.Text = "SMS:";
+            // 
+            // startMsgBtn
+            // 
+            this.startMsgBtn.Location = new System.Drawing.Point(43, 441);
+            this.startMsgBtn.Name = "startMsgBtn";
+            this.startMsgBtn.Size = new System.Drawing.Size(42, 23);
+            this.startMsgBtn.TabIndex = 12;
+            this.startMsgBtn.Text = "Start";
+            this.startMsgBtn.UseVisualStyleBackColor = true;
+            this.startMsgBtn.Click += new System.EventHandler(this.startMsgBtn_Click);
+            // 
+            // stopMsgBtn
+            // 
+            this.stopMsgBtn.Location = new System.Drawing.Point(91, 441);
+            this.stopMsgBtn.Name = "stopMsgBtn";
+            this.stopMsgBtn.Size = new System.Drawing.Size(42, 23);
+            this.stopMsgBtn.TabIndex = 11;
+            this.stopMsgBtn.Text = "Stop";
+            this.stopMsgBtn.UseVisualStyleBackColor = true;
+            this.stopMsgBtn.Click += new System.EventHandler(this.stopMsgBtn_Click);
+            // 
+            // notificationBox
+            // 
+            this.notificationBox.Location = new System.Drawing.Point(139, 443);
+            this.notificationBox.Name = "notificationBox";
+            this.notificationBox.Size = new System.Drawing.Size(227, 20);
+            this.notificationBox.TabIndex = 14;
             // 
             // mobilePhoneWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 378);
+            this.ClientSize = new System.Drawing.Size(771, 489);
             this.Controls.Add(this.smsApp);
             this.Controls.Add(this.accessoryGrp);
             this.Controls.Add(this.mobileOutBox);
@@ -269,6 +456,9 @@
             this.audioAccessGrp.ResumeLayout(false);
             this.audioAccessGrp.PerformLayout();
             this.smsApp.ResumeLayout(false);
+            this.smsApp.PerformLayout();
+            this.filterGroupBox.ResumeLayout(false);
+            this.filterGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,12 +478,28 @@
         private System.Windows.Forms.RadioButton portableSpeakerBtn;
         private System.Windows.Forms.RadioButton noNameSetBtn;
         private System.Windows.Forms.RadioButton iPhoneSetBtn;
-        private System.Windows.Forms.Button ApplyUsbBtn;
+        private System.Windows.Forms.Button applyUsbBtn;
         private System.Windows.Forms.Button applyAudioBtn;
         private System.Windows.Forms.Timer smsTimer;
         private System.Windows.Forms.GroupBox smsApp;
-        private System.Windows.Forms.RichTextBox smsBox;
         private System.Windows.Forms.ComboBox formatComboBox;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.DateTimePicker toDateTimePick;
+        private System.Windows.Forms.DateTimePicker fromDateTimePick;
+        private System.Windows.Forms.TextBox searchMessageBox;
+        private System.Windows.Forms.ComboBox contactComboBox;
+        private System.Windows.Forms.GroupBox filterGroupBox;
+        private System.Windows.Forms.RadioButton orFilterRBtn;
+        private System.Windows.Forms.RadioButton andFilterRBtn;
+        private System.Windows.Forms.ListView smsListView;
+        private System.Windows.Forms.ColumnHeader contactsCol;
+        private System.Windows.Forms.ColumnHeader messageCol;
+        private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.TextBox notificationBox;
+        private System.Windows.Forms.Label msgLabel;
+        private System.Windows.Forms.Button startMsgBtn;
+        private System.Windows.Forms.Button stopMsgBtn;
     }
 }
 

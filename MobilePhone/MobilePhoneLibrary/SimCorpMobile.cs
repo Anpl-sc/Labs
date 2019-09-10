@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using MobilePhoneLibrary.Hardware.AudioInOut;
 using MobilePhoneLibrary.Hardware.Battery;
 using MobilePhoneLibrary.Hardware.CellularModule;
@@ -38,7 +39,15 @@ namespace MobilePhoneLibrary {
             int touchSensitivityRate = 90;
             vMultiTouchPanel = new MultiTouchPanel(controlHeght, controlWidth, touchSensitivityRate, userInOut);
 
-            vSMService = new SMService(); 
+            vMessageStorage = new MessageStorage {
+                Contacts = new List<Contact> {
+                    new Contact("John", 380101),
+                    new Contact("Nick", 380102),
+                    new Contact("Emma", 380103)
+                }
+            };
+
+            vSMSProvider = new SMSProvider();
         }
 
         private readonly Microphone vMicrophone;
@@ -47,7 +56,8 @@ namespace MobilePhoneLibrary {
         private readonly CellularModule vCellModule;
         private readonly TuningScreen vScreen;
         private readonly UserControl vMultiTouchPanel;
-        private readonly SMService vSMService;
+        private readonly MessageStorage vMessageStorage;
+        private readonly SMSProvider vSMSProvider;
 
         public override Microphone Microphone { get { return vMicrophone; } }
         public override Speaker Speaker { get { return vSpeaker; } }
@@ -55,7 +65,8 @@ namespace MobilePhoneLibrary {
         public override CellularModule CellModule { get { return vCellModule; } }
         public override Screen Screen { get { return vScreen; } }
         public override UserControl Control { get { return vMultiTouchPanel; } }
-        public override SMService MessageService { get { return vSMService; } }
+        public override MessageStorage MessageStorage { get { return vMessageStorage; } }
+        internal override SMSProvider SMSProvider { get { return vSMSProvider; } }
 
         public override string ToString() {
             var descriptionBuilder = new StringBuilder();

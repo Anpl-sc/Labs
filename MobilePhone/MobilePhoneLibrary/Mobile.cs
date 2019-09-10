@@ -53,7 +53,8 @@ namespace MobilePhoneLibrary {
             Control.ParseInput(input);
         }
 
-        public abstract SMService MessageService { get; }
+        public abstract MessageStorage MessageStorage { get; }
+        internal abstract SMSProvider SMSProvider { get; }
 
         public override string ToString() {
             var descriptionBuilder = new StringBuilder();
@@ -158,6 +159,12 @@ namespace MobilePhoneLibrary {
                 DataTransfer(data);
                 userInOut.WriteLine("");
             }
+        }
+
+        public void ReceiveMessage()
+        {
+            PhoneMessage message = SMSProvider.GetMessage(MessageStorage.Contacts);
+            MessageStorage.AddMessage(message);
         }
     }
 }
