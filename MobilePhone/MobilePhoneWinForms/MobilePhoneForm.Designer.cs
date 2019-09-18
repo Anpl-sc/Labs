@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.mobileInfoBtn = new System.Windows.Forms.Button();
             this.mobileOutBox = new System.Windows.Forms.TextBox();
             this.accessoryGrp = new System.Windows.Forms.GroupBox();
@@ -38,8 +37,11 @@
             this.portableSpeakerBtn = new System.Windows.Forms.RadioButton();
             this.noNameSetBtn = new System.Windows.Forms.RadioButton();
             this.iPhoneSetBtn = new System.Windows.Forms.RadioButton();
-            this.smsTimer = new System.Windows.Forms.Timer(this.components);
             this.smsApp = new System.Windows.Forms.GroupBox();
+            this.notificationBox = new System.Windows.Forms.TextBox();
+            this.msgLabel = new System.Windows.Forms.Label();
+            this.startMsgBtn = new System.Windows.Forms.Button();
+            this.stopMsgBtn = new System.Windows.Forms.Button();
             this.searchLabel = new System.Windows.Forms.Label();
             this.smsListView = new System.Windows.Forms.ListView();
             this.contactsCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -54,15 +56,16 @@
             this.searchMessageBox = new System.Windows.Forms.TextBox();
             this.contactComboBox = new System.Windows.Forms.ComboBox();
             this.formatComboBox = new System.Windows.Forms.ComboBox();
-            this.msgLabel = new System.Windows.Forms.Label();
-            this.startMsgBtn = new System.Windows.Forms.Button();
-            this.stopMsgBtn = new System.Windows.Forms.Button();
-            this.notificationBox = new System.Windows.Forms.TextBox();
+            this.chargeBox = new System.Windows.Forms.GroupBox();
+            this.chargeProgress = new System.Windows.Forms.ProgressBar();
+            this.chargeStartBtn = new System.Windows.Forms.Button();
+            this.chargeStopBtn = new System.Windows.Forms.Button();
             this.accessoryGrp.SuspendLayout();
             this.usbAccessGrp.SuspendLayout();
             this.audioAccessGrp.SuspendLayout();
             this.smsApp.SuspendLayout();
             this.filterGroupBox.SuspendLayout();
+            this.chargeBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mobileInfoBtn
@@ -224,11 +227,6 @@
             this.iPhoneSetBtn.Text = "iPhone headset";
             this.iPhoneSetBtn.UseVisualStyleBackColor = true;
             // 
-            // smsTimer
-            // 
-            this.smsTimer.Interval = 500;
-            this.smsTimer.Tick += new System.EventHandler(this.smsTimer_Tick);
-            // 
             // smsApp
             // 
             this.smsApp.Controls.Add(this.notificationBox);
@@ -251,6 +249,42 @@
             this.smsApp.TabIndex = 4;
             this.smsApp.TabStop = false;
             this.smsApp.Text = "SMS Application";
+            // 
+            // notificationBox
+            // 
+            this.notificationBox.Location = new System.Drawing.Point(139, 443);
+            this.notificationBox.Name = "notificationBox";
+            this.notificationBox.Size = new System.Drawing.Size(227, 20);
+            this.notificationBox.TabIndex = 14;
+            // 
+            // msgLabel
+            // 
+            this.msgLabel.AutoSize = true;
+            this.msgLabel.Location = new System.Drawing.Point(6, 446);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(33, 13);
+            this.msgLabel.TabIndex = 13;
+            this.msgLabel.Text = "SMS:";
+            // 
+            // startMsgBtn
+            // 
+            this.startMsgBtn.Location = new System.Drawing.Point(43, 441);
+            this.startMsgBtn.Name = "startMsgBtn";
+            this.startMsgBtn.Size = new System.Drawing.Size(42, 23);
+            this.startMsgBtn.TabIndex = 12;
+            this.startMsgBtn.Text = "Start";
+            this.startMsgBtn.UseVisualStyleBackColor = true;
+            this.startMsgBtn.Click += new System.EventHandler(this.startMsgBtn_Click);
+            // 
+            // stopMsgBtn
+            // 
+            this.stopMsgBtn.Location = new System.Drawing.Point(91, 441);
+            this.stopMsgBtn.Name = "stopMsgBtn";
+            this.stopMsgBtn.Size = new System.Drawing.Size(42, 23);
+            this.stopMsgBtn.TabIndex = 11;
+            this.stopMsgBtn.Text = "Stop";
+            this.stopMsgBtn.UseVisualStyleBackColor = true;
+            this.stopMsgBtn.Click += new System.EventHandler(this.stopMsgBtn_Click);
             // 
             // searchLabel
             // 
@@ -400,47 +434,51 @@
             this.formatComboBox.Text = "Select Formatting";
             this.formatComboBox.SelectedIndexChanged += new System.EventHandler(this.formatComboBox_SelectedIndexChanged);
             // 
-            // msgLabel
+            // chargeBox
             // 
-            this.msgLabel.AutoSize = true;
-            this.msgLabel.Location = new System.Drawing.Point(6, 446);
-            this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(33, 13);
-            this.msgLabel.TabIndex = 13;
-            this.msgLabel.Text = "SMS:";
+            this.chargeBox.Controls.Add(this.chargeStopBtn);
+            this.chargeBox.Controls.Add(this.chargeStartBtn);
+            this.chargeBox.Controls.Add(this.chargeProgress);
+            this.chargeBox.Location = new System.Drawing.Point(13, 375);
+            this.chargeBox.Name = "chargeBox";
+            this.chargeBox.Size = new System.Drawing.Size(372, 109);
+            this.chargeBox.TabIndex = 5;
+            this.chargeBox.TabStop = false;
+            this.chargeBox.Text = "Charging";
             // 
-            // startMsgBtn
+            // chargeProgress
             // 
-            this.startMsgBtn.Location = new System.Drawing.Point(43, 441);
-            this.startMsgBtn.Name = "startMsgBtn";
-            this.startMsgBtn.Size = new System.Drawing.Size(42, 23);
-            this.startMsgBtn.TabIndex = 12;
-            this.startMsgBtn.Text = "Start";
-            this.startMsgBtn.UseVisualStyleBackColor = true;
-            this.startMsgBtn.Click += new System.EventHandler(this.startMsgBtn_Click);
+            this.chargeProgress.Location = new System.Drawing.Point(6, 19);
+            this.chargeProgress.Name = "chargeProgress";
+            this.chargeProgress.Size = new System.Drawing.Size(360, 23);
+            this.chargeProgress.TabIndex = 0;
             // 
-            // stopMsgBtn
+            // chargeStartBtn
             // 
-            this.stopMsgBtn.Location = new System.Drawing.Point(91, 441);
-            this.stopMsgBtn.Name = "stopMsgBtn";
-            this.stopMsgBtn.Size = new System.Drawing.Size(42, 23);
-            this.stopMsgBtn.TabIndex = 11;
-            this.stopMsgBtn.Text = "Stop";
-            this.stopMsgBtn.UseVisualStyleBackColor = true;
-            this.stopMsgBtn.Click += new System.EventHandler(this.stopMsgBtn_Click);
+            this.chargeStartBtn.Location = new System.Drawing.Point(6, 48);
+            this.chargeStartBtn.Name = "chargeStartBtn";
+            this.chargeStartBtn.Size = new System.Drawing.Size(75, 23);
+            this.chargeStartBtn.TabIndex = 1;
+            this.chargeStartBtn.Text = "Charge Start";
+            this.chargeStartBtn.UseVisualStyleBackColor = true;
+            this.chargeStartBtn.Click += new System.EventHandler(this.chargeStartBtn_Click);
             // 
-            // notificationBox
+            // chargeStopBtn
             // 
-            this.notificationBox.Location = new System.Drawing.Point(139, 443);
-            this.notificationBox.Name = "notificationBox";
-            this.notificationBox.Size = new System.Drawing.Size(227, 20);
-            this.notificationBox.TabIndex = 14;
+            this.chargeStopBtn.Location = new System.Drawing.Point(87, 48);
+            this.chargeStopBtn.Name = "chargeStopBtn";
+            this.chargeStopBtn.Size = new System.Drawing.Size(75, 23);
+            this.chargeStopBtn.TabIndex = 2;
+            this.chargeStopBtn.Text = "Charge Stop";
+            this.chargeStopBtn.UseVisualStyleBackColor = true;
+            this.chargeStopBtn.Click += new System.EventHandler(this.chargeStopBtn_Click);
             // 
             // mobilePhoneWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 489);
+            this.Controls.Add(this.chargeBox);
             this.Controls.Add(this.smsApp);
             this.Controls.Add(this.accessoryGrp);
             this.Controls.Add(this.mobileOutBox);
@@ -459,6 +497,7 @@
             this.smsApp.PerformLayout();
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
+            this.chargeBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,7 +519,6 @@
         private System.Windows.Forms.RadioButton iPhoneSetBtn;
         private System.Windows.Forms.Button applyUsbBtn;
         private System.Windows.Forms.Button applyAudioBtn;
-        private System.Windows.Forms.Timer smsTimer;
         private System.Windows.Forms.GroupBox smsApp;
         private System.Windows.Forms.ComboBox formatComboBox;
         private System.Windows.Forms.Label toLabel;
@@ -500,6 +538,10 @@
         private System.Windows.Forms.Label msgLabel;
         private System.Windows.Forms.Button startMsgBtn;
         private System.Windows.Forms.Button stopMsgBtn;
+        private System.Windows.Forms.GroupBox chargeBox;
+        private System.Windows.Forms.Button chargeStopBtn;
+        private System.Windows.Forms.Button chargeStartBtn;
+        private System.Windows.Forms.ProgressBar chargeProgress;
     }
 }
 

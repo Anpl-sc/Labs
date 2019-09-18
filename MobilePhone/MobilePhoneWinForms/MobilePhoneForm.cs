@@ -26,6 +26,8 @@ namespace MobilePhoneWinForms {
             simCorpMobile = new SimCorpMobile(formInOut);
             simCorpMobile.MessageStorage.SMSShow += ShowMessages;
             simCorpMobile.MessageStorage.SMSNotify += NotifyMessage;
+            simCorpMobile.Battery.ShowCharge += ShowChargeProgress;
+            simCorpMobile?.Battery.Discharge(200);
         }
 
         private void mobileInfoBtn_Click(object sender, EventArgs e) {
@@ -47,16 +49,8 @@ namespace MobilePhoneWinForms {
             simCorpMobile.SetUsbAccessory();
         }
 
-        private void smsTimer_Tick(object sender, EventArgs e) {
-            simCorpMobile?.ReceiveMessage();
-        }
-
         private void formatComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             SetMessageSettings();
-        }
-
-        private void NotifyMessage(string notification) {
-            notificationBox.Text = notification;
         }
 
         private void SetMessageSettings() {
@@ -70,16 +64,24 @@ namespace MobilePhoneWinForms {
                 filterGroupBox.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)?.Equals(andFilterRBtn) ?? false ));
         }
 
-        private void ShowMessages(List<PhoneMessage> messages) {
-            if (messages.Count != 0) {
-                UpdateContacts(messages);
+        private void NotifyMessage(string notification) {
+            Invoke((Action)(() => { notificationBox.Text = notification; }));
+        }
 
-                smsListView.Items.Clear();
-                foreach (PhoneMessage message in messages) {
-                    smsListView.Items.Add(new ListViewItem(new[] {
+        private void ShowMessages(List<PhoneMessage> messages)
+        {
+            Invoke((Action) (() =>
+            {
+                if (messages.Count != 0) {
+                    UpdateContacts(messages);
+
+                    smsListView.Items.Clear();
+                    foreach (PhoneMessage message in messages) {
+                        smsListView.Items.Add(new ListViewItem(new[] {
                     message.UserContact.GetContact(), message.FormatText}));
+                    }
                 }
-            }
+            }));
         }
 
         private void UpdateContacts(List<PhoneMessage> messages) {
@@ -127,11 +129,25 @@ namespace MobilePhoneWinForms {
         }
 
         private void startMsgBtn_Click(object sender, EventArgs e) {
-            smsTimer.Enabled = true;
+            simCorpMobile?.MessagesStart();
         }
 
         private void stopMsgBtn_Click(object sender, EventArgs e) {
-            smsTimer.Enabled = false;
+            simCorpMobile?.MessageStop();
+        }
+
+        private void chargeStartBtn_Click(object sender, EventArgs e) {
+            simCorpMobile?.Battery.StartCharge(100);
+        }
+
+        private void chargeStopBtn_Click(object sender, EventArgs e) {
+            simCorpMobile?.Battery.StopCharge();
+        }
+
+        private void ShowChargeProgress(object sender, int charge) {
+            Invoke((Action) (() => {
+                chargeProgress.Value = charge;
+            }));
         }
     }
 }

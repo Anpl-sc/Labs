@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using MobilePhoneLibrary.Accessories.Audio;
 using MobilePhoneLibrary.Accessories.Usb;
 using MobilePhoneLibrary.Hardware.AudioInOut;
@@ -161,10 +163,13 @@ namespace MobilePhoneLibrary {
             }
         }
 
-        public void ReceiveMessage()
-        {
-            PhoneMessage message = SMSProvider.GetMessage(MessageStorage.Contacts);
-            MessageStorage.AddMessage(message);
+        public void MessagesStart() {
+            SMSProvider.Generate += (s, m) => MessageStorage.AddMessage(m);
+            SMSProvider.Start(MessageStorage.Contacts);
+        }
+
+        public void MessageStop() {
+            SMSProvider.Stop();
         }
     }
 }

@@ -2,11 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MobilePhoneLibrary.Services {
     public class SMSProvider {
         private int messageCounter;
+        private volatile bool vCanCreateMessage;
+
+        protected bool CanCreateMessage {
+            get { return vCanCreateMessage; }
+            set { vCanCreateMessage = value; }
+        }
+
+        public EventHandler<PhoneMessage> Generate;
+
+        public virtual void Start(List<Contact> contacts) {
+            CanCreateMessage = true;
+            while (CanCreateMessage)
+            {
+                Thread.Sleep(500);
+                Generate?.Invoke(this, GetMessage(contacts));
+            }
+        }
+        
+        public void Stop() {
+            CanCreateMessage = false;
+        }
 
         public PhoneMessage GetMessage(List<Contact> contacts) {
             messageCounter++;

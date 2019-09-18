@@ -18,10 +18,6 @@ namespace MobilePhoneLibrary {
             string speakerBandwidth = "20 - 18k Hz";
             vSpeaker = new Speaker(outputPower, speakerBandwidth, userInOut);
 
-            int capacity = 5000;
-            int chargingTime = 60;
-            vBattery = new Battery(capacity, chargingTime, userInOut);
-
             CellularType cellModuleType = CellularType.Lte;
             int workingDistance = 1000;
             vCellModule = new CellularModule(cellModuleType, workingDistance, userInOut);
@@ -47,7 +43,32 @@ namespace MobilePhoneLibrary {
                 }
             };
 
-            vSMSProvider = new SMSProvider();
+            ParallelType type = ParallelType.Task;
+            vSMSProvider = GetSMSProvider(type);
+            vBattery = GetBattery(type, userInOut);
+        }
+
+        private SMSProvider GetSMSProvider(ParallelType type) {
+            SMSProvider provider;
+            if (type.Equals(ParallelType.Thread)) {
+                provider = new SMSProviderThread(); 
+            } else {
+                provider = new SMSProviderTask();
+            }
+            return provider;
+        }
+
+        private Battery GetBattery(ParallelType type, IUserInOut userInOut) {
+            Battery battery;
+            int capacity = 5000;
+            int chargingTime = 60;
+
+            if (type.Equals(ParallelType.Thread)) {   
+                battery = new BatteryThread(capacity, chargingTime, userInOut);
+            } else { 
+                battery = new BatteryTask(capacity, chargingTime, userInOut); 
+            }
+            return battery;
         }
 
         private readonly Microphone vMicrophone;

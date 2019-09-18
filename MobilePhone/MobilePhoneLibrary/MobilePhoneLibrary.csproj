@@ -55,6 +55,8 @@
     <Compile Include="Hardware\AudioInOut\Microphone.cs" />
     <Compile Include="Hardware\AudioInOut\Speaker.cs" />
     <Compile Include="Hardware\Battery\Battery.cs" />
+    <Compile Include="Hardware\Battery\BatteryTask.cs" />
+    <Compile Include="Hardware\Battery\BatteryThread.cs" />
     <Compile Include="Hardware\Battery\IPowerProfile.cs" />
     <Compile Include="Hardware\CellularModule\CellularModule.cs" />
     <Compile Include="Hardware\CellularModule\CellularType.cs" />
@@ -77,9 +79,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Contact.cs" />
     <Compile Include="Services\MessagesSettings.cs" />
+    <Compile Include="ParallelType.cs" />
     <Compile Include="Services\SMSProvider.cs" />
     <Compile Include="Services\PhoneMessage.cs" />
     <Compile Include="Services\MessageStorage.cs" />
+    <Compile Include="Services\SMSProviderTask.cs" />
+    <Compile Include="Services\SMSProviderThread.cs" />
     <Compile Include="SimCorpMobile.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -58,6 +58,9 @@
     <Compile Include="ChargerTest.cs" />
     <Compile Include="SimCorpMobileTest.cs" />
     <Compile Include="MessageStorageTest.cs" />
+    <Compile Include="BatteryTest.cs" />
+    <Compile Include="BatteryTaskTest.cs" />
+    <Compile Include="BatteryThreadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobilePhoneLibrary\MobilePhoneLibrary.csproj">
