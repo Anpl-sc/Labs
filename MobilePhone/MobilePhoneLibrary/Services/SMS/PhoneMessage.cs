@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MobilePhoneLibrary.Services {
+namespace MobilePhoneLibrary.Services.SMS {
     public class PhoneMessage {
         public Contact UserContact { get; }
         public string Text { get; }

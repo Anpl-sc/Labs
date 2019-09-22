@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MobilePhoneLibrary.Services;
+using MobilePhoneLibrary.Services.SMS;
 
 namespace MobilePhone.Tests {
     [TestClass]

@@ -6,6 +6,7 @@ using MobilePhoneLibrary.Hardware.CellularModule;
 using MobilePhoneLibrary.Hardware.Screen;
 using MobilePhoneLibrary.Hardware.UserControl;
 using MobilePhoneLibrary.Services;
+using MobilePhoneLibrary.Services.SMS;
 
 namespace MobilePhoneLibrary {
     public class SimCorpMobile : Mobile {

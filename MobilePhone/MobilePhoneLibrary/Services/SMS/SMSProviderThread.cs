@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace MobilePhoneLibrary.Services {
+namespace MobilePhoneLibrary.Services.SMS {
     public class SMSProviderThread : SMSProvider {
         public override void Start(List<Contact> contacts) {
             CanCreateMessage = true;

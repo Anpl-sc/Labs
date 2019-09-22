@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MobilePhoneLibrary.Services {
+namespace MobilePhoneLibrary.Services.SMS {
     public class MessageStorage {
         private delegate string FormatDelegate(PhoneMessage message);
         private FormatDelegate Formatter;

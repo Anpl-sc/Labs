@@ -60,6 +60,7 @@
             this.chargeProgress = new System.Windows.Forms.ProgressBar();
             this.chargeStartBtn = new System.Windows.Forms.Button();
             this.chargeStopBtn = new System.Windows.Forms.Button();
+            this.callsFormBtn = new System.Windows.Forms.Button();
             this.accessoryGrp.SuspendLayout();
             this.usbAccessGrp.SuspendLayout();
             this.audioAccessGrp.SuspendLayout();
@@ -473,11 +474,22 @@
             this.chargeStopBtn.UseVisualStyleBackColor = true;
             this.chargeStopBtn.Click += new System.EventHandler(this.chargeStopBtn_Click);
             // 
+            // callsFormBtn
+            // 
+            this.callsFormBtn.Location = new System.Drawing.Point(201, 13);
+            this.callsFormBtn.Name = "callsFormBtn";
+            this.callsFormBtn.Size = new System.Drawing.Size(75, 23);
+            this.callsFormBtn.TabIndex = 6;
+            this.callsFormBtn.Text = "Calls App";
+            this.callsFormBtn.UseVisualStyleBackColor = true;
+            this.callsFormBtn.Click += new System.EventHandler(this.callsFormBtn_Click);
+            // 
             // mobilePhoneWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 489);
+            this.Controls.Add(this.callsFormBtn);
             this.Controls.Add(this.chargeBox);
             this.Controls.Add(this.smsApp);
             this.Controls.Add(this.accessoryGrp);
@@ -542,6 +554,7 @@
         private System.Windows.Forms.Button chargeStopBtn;
         private System.Windows.Forms.Button chargeStartBtn;
         private System.Windows.Forms.ProgressBar chargeProgress;
+        private System.Windows.Forms.Button callsFormBtn;
     }
 }
 

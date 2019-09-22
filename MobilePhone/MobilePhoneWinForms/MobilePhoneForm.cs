@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MobilePhoneLibrary;
 using MobilePhoneLibrary.Services;
+using MobilePhoneLibrary.Services.SMS;
 
 namespace MobilePhoneWinForms {
     public partial class mobilePhoneWin : Form {
@@ -148,6 +149,11 @@ namespace MobilePhoneWinForms {
             Invoke((Action) (() => {
                 chargeProgress.Value = charge;
             }));
+        }
+
+        private void callsFormBtn_Click(object sender, EventArgs e) {
+            Form callsForm = new CallsForm();
+            callsForm.Show();
         }
     }
 }

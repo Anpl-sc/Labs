@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MobilePhoneLibrary.Services {
+namespace MobilePhoneLibrary.Services.SMS {
     public class SMSProviderTask : SMSProvider {
         public override void Start(List<Contact> contacts) {
             var messageTask = GetMessageTask(contacts);
